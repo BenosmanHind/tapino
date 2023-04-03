@@ -18,10 +18,8 @@
                 </ol>
             </div>
         </div>
-
-        <form action="{{url('admin/products')}}" method="POST" id="addProduct" enctype="multipart/form-data">
+       <form action="{{url('admin/products')}}" method="POST" id="addProduct" enctype="multipart/form-data">
         @csrf
-
         <div class="row ">
             <div class="col-xl-12 col-lg-12">
                 <div class="card">
@@ -29,17 +27,21 @@
                         <h4 class="card-title">Ajouter produit</h4>
                     </div>
                     <div class="card-body">
-
                                 <div class="form-row">
-                                    <div class="form-group col-md-6">
+                                    <div class="form-group col-md-4">
                                         <label>Désignation*:</label>
                                         <input type="text"  class="form-control input-default "
                                           value="{{old('designation')}}" name="designation" id="designation" placeholder="designation" >
                                     </div>
-                                    <div class="form-group col-md-6">
+                                    <div class="form-group col-md-4">
                                         <label>Désignation 2(optionnel):</label>
                                         <input type="text"  class="form-control input-default "
                                           value="{{old('designation')}}" name="designation_2" placeholder="designation" >
+                                    </div>
+                                    <div class="form-group col-md-4">
+                                        <label>Référence*:</label>
+                                        <input type="text"  class="form-control input-default "
+                                          value="{{old('reference')}}" name="reference" id="reference" placeholder="reference" >
                                     </div>
                                 </div>
                                 <div class="form-row">

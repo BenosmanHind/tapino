@@ -424,5 +424,7 @@
 @stack('show-dimensions-scripts')
 @stack('add-dimension-scripts')
 @stack('modal-productlines-scripts')
+@stack('select-productline-scripts')
+@stack('modal-add-stock-scripts')
 </body>
 </html>

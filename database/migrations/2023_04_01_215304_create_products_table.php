@@ -15,11 +15,12 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('category_id')->unsigned();
             $table->string('designation');
-            $table->integer('pricem_1');
-            $table->integer('pricem_2')->nullable();
-            $table->integer('pricem_3')->nullable();
+            $table->float('pricem_1');
+            $table->float('pricem_2')->nullable();
+            $table->float('pricem_3')->nullable();
             $table->integer('qte_alert')->nullable();
             $table->string('emplacement');
+            $table->string('reference');
             $table->string('designation_2')->nullable();
             $table->string('slug')->nullable();
             $table->integer('flag')->nullable();

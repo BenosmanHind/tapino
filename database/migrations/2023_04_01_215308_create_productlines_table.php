@@ -15,12 +15,12 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('product_id')->unsigned();
             $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');
-            $table->integer('width');
-            $table->integer('height');
-            $table->integer('totalm_1');
-            $table->integer('totalm_2')->nullable();
-            $table->integer('totalm_3')->nullable();
-            $table->integer('m2')->nullable();
+            $table->float('width');
+            $table->float('height');
+            $table->float('totalm_1');
+            $table->float('totalm_2')->nullable();
+            $table->float('totalm_3')->nullable();
+            $table->float('m2')->nullable();
             $table->timestamps();
         });
     }

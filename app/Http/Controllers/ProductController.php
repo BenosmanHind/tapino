@@ -32,6 +32,7 @@ class ProductController extends Controller
         $product->qte_alert = $request->qte_alert;
         $product->emplacement = $request->emplacement;
         $product->category_id = $request->category;
+        $product->reference = $request->reference;
         $product->save();
         for($i=0 ; $i<count($request->width);$i++){
         $product_line = new Productline();
@@ -50,7 +51,7 @@ class ProductController extends Controller
         $product_line->m2 = $request->width[$i] *  $request->height[$i];
         $product_line->save();
         }
-
+       return redirect('admin/products');
     }
 
     public function productlines($id){
@@ -58,4 +59,6 @@ class ProductController extends Controller
         $productlines = Productline::where('product_id',$id)->get();
         return view('admin.modal-productline',compact('productlines','product'));
     }
+
+
 }
