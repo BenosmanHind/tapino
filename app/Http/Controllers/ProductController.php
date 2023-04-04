@@ -54,6 +54,50 @@ class ProductController extends Controller
        return redirect('admin/products');
     }
 
+    public function edit($id){
+        $product = Product::find($id);
+        $productlines = Productline::where('product_id',$id)->get();
+        $categories = Category::orderBy('created_at','desc')->get();
+        $emplacements = Emplacement::orderBy('created_at','desc')->get();
+        return view('admin.edit-product',compact('product','productlines','categories','emplacements'));
+    }
+
+    public function update(Request $request , $id){
+        $product = Product::find($id);
+        $productlines = Productline::where('product_id',$id)->get();
+        foreach($productlines as $productline){
+            $productline->delete();
+        }
+        $product->designation = $request->designation;
+        $product->designation_2 = $request->designation_2;
+        $product->pricem_1 = $request->price_1;
+        $product->pricem_2 = $request->price_2;
+        $product->pricem_3 = $request->price_3;
+        $product->qte_alert = $request->qte_alert;
+        $product->emplacement = $request->emplacement;
+        $product->category_id = $request->category;
+        $product->reference = $request->reference;
+        $product->save();
+        for($i=0 ; $i<count($request->width);$i++){
+        $product_line = new Productline();
+        $product_line->product_id = $product->id;
+        $product_line->width = $request->width[$i];
+        $product_line->height = $request->height[$i];
+        if($request->price_1){
+            $product_line->totalm_1 = $request->width[$i] *  $request->height[$i] * $request->price_1;
+        }
+        if($request->price_2){
+            $product_line->totalm_2 = $request->width[$i] *  $request->height[$i] * $request->price_2;
+        }
+        if($request->price_3){
+            $product_line->totalm_3 = $request->width[$i] *  $request->height[$i] * $request->price_3;
+        }
+        $product_line->m2 = $request->width[$i] *  $request->height[$i];
+        $product_line->save();
+        }
+       return redirect('admin/products');
+    }
+
     public function productlines($id){
         $product = Product::find($id);
         $productlines = Productline::where('product_id',$id)->get();

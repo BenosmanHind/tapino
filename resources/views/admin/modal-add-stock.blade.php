@@ -11,11 +11,10 @@
             <div class="modal-body">
                 <div class="card-body">
                     <div class="basic-form">
-                        <p>Qte actuelle en m² : <b>{{ $qte_m2 }}</b></p>
-                        <p>Qte actuelle en pcs. : <b>{{ $qte }}</b></p>
+                        <p>Stock actuelle : <b> {{ $qte }}</b> pcs ,<b>{{ $qte_m2 }}</b> m²</p>
                         <div class="form-row ">
                             <div class="form-group col-md-12">
-                            <label>Type* :</label>
+                            <label>Action* :</label>
                                 <select type="text"  class="form-control input-default" name="type" class="selectpicker" data-live-search="true" required>
                                     <option value="stockage">Stockage</option>
                                     <option value="destockage">Déstockage</option>

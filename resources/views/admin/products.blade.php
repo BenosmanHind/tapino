@@ -45,7 +45,7 @@
                                         <td>
                                             <div class="d-flex">
                                                 <button data-id="{{$product->id}}"class="btn btn-primary shadow btn-xs sharp mr-1 show-productlines"><i class="fas fa-eye"></i></button>
-                                                <a href="#" class="btn btn-primary shadow btn-xs sharp mr-1"><i class="fas fa-pencil-alt"></i></a>
+                                                <a href="{{url('admin/products/'.$product->id.'/edit')}}" class="btn btn-primary shadow btn-xs sharp mr-1"><i class="fas fa-pencil-alt"></i></a>
                                                 <form action="{{url('admin/products/'.$product->id)}}" method="post">
                                                     {{csrf_field()}}
                                                     {{method_field('DELETE')}}

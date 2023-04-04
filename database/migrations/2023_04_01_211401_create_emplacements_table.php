@@ -13,8 +13,9 @@ return new class extends Migration
     {
         Schema::create('emplacements', function (Blueprint $table) {
             $table->id();
-            $table->string('ticket');
-            $table->string('column')->nullable();
+            $table->string('code');
+            $table->string('zone')->nullable();
+            $table->string('rayonnage')->nullable();
             $table->timestamps();
         });
     }

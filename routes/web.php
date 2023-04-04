@@ -5,6 +5,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\EmplacementController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\StockController;
+use App\Http\Controllers\ProfessionalController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -30,5 +31,6 @@ Route::resource('/admin/categories',CategoryController::class);
 Route::resource('admin/emplacements',EmplacementController::class);
 Route::resource('admin/products',ProductController::class);
 Route::resource('admin/stocks',StockController::class);
+Route::resource('admin/professionals',ProfessionalController::class);
 Route::get('productlines/{id}', [App\Http\Controllers\ProductController::class, 'productlines']);
 Route::get('add-stock/{id}', [App\Http\Controllers\StockController::class, 'modalAddStock']);

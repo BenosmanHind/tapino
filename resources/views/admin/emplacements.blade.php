@@ -29,8 +29,8 @@
                             <form action="{{url('admin/emplacements')}}" method="POST" enctype="multipart/form-data">
                                 @csrf
                                 <div class="form-group">
-                                    <label>Ticket* :</label>
-                                    <input type="text" class="form-control input-default " name="ticket" placeholder="Ticket" required>
+                                    <label>Code* :</label>
+                                    <input type="text" class="form-control input-default " name="code" placeholder="code" required>
                                 </div>
                                 <button type="submit"  class="btn btn-primary mt-3">Ajouter</button>
                             </form>
@@ -50,7 +50,7 @@
                             <thead>
                                 <tr>
                                     <th>#</th>
-                                    <th>Ticket</th>
+                                    <th>Code</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
@@ -58,7 +58,7 @@
                             @foreach($emplacements as $emplacement)
                                 <tr >
                                     <td>{{$loop->iteration}}</td>
-                                    <td>{{$emplacement->ticket}}</td>
+                                    <td>{{$emplacement->code}}</td>
                                     <td>
                                         <form action="{{url('admin/emplacements/'.$emplacement->id)}}" method="post">
                                             {{csrf_field()}}

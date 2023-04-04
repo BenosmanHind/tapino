@@ -7,13 +7,13 @@
             <div class="col-sm-6 p-md-0">
                 <div class="welcome-text">
                     <h4>Bonjour, Bienvenue!</h4>
-                    <span>Mouvement de stock</span>
+                    <span>Stock</span>
                 </div>
             </div>
             <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="{{ asset('/admin') }}">Admin</a></li>
-                    <li class="breadcrumb-item active"><a href="javascript:void(0)">Mouvement de stock</a></li>
+                    <li class="breadcrumb-item active"><a href="javascript:void(0)">Stock</a></li>
                 </ol>
             </div>
         </div>
@@ -22,7 +22,7 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-header">
-                        <h4 class="card-title">Mouvement de stock</h4>
+                        <h4 class="card-title">Stock</h4>
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
@@ -31,9 +31,10 @@
                                 <tr>
                                     <th>#</th>
                                     <th>Produit</th>
+                                    <th>Référence</th>
                                     <th>Dimension</th>
-                                    <th>Qte en stock</th>
-                                    <th>Qte (m²) en stock</th>
+                                    <th>Qte</th>
+                                    <th>Qte (m²)</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
@@ -41,10 +42,11 @@
                             @foreach($productlines as $productline)
                                 <tr >
                                     <td>{{$loop->iteration}}</td>
-                                    <td>{{$productline->product->designation}} {{$productline->product->reference}}</td>
+                                    <td>{{$productline->product->designation}} </td>
+                                    <td>{{$productline->product->reference}}</td>
                                     <td>{{$productline->width}} x {{ $productline->height }}</td>
                                     <td>{{$productline->qte()}}</td>
-                                    <td>{{$productline->qteM2()}}</td>
+                                    <td>{{$productline->qteM2()}} m²</td>
                                     <td>
                                         <div class="d-flex">
                                             <button data-id="{{$productline->id}}"class="btn btn-primary shadow btn-xs sharp mr-1 add-stock"><i class="fa fa-plus"></i></button>

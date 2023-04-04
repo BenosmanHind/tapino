@@ -14,7 +14,7 @@ class EmplacementController extends Controller
     }
     public function store(Request $request){
         $emplacement = new Emplacement();
-        $emplacement->ticket = $request->ticket;
+        $emplacement->code = $request->code;
         $emplacement->save();
         return redirect()->back();
     }
@@ -26,7 +26,7 @@ class EmplacementController extends Controller
     }
     public function update(Request $request , $id){
         $emplacement = Emplacement::find($id);
-        $emplacement->ticket = $request->ticket;
+        $emplacement->code = $request->code;
         $emplacement->save();
         return redirect()->back();
     }
