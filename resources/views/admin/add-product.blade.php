@@ -106,6 +106,7 @@
                                         <tr>
                                             <th scope="col">Largeur </th>
                                             <th scope="col">Hauteur</th>
+                                            <th scope="col">Elements ?</th>
                                             <th scope="col">#</th>
                                         </tr>
                                     </thead>
@@ -125,6 +126,19 @@
                                                         <div class="input-group-append">
                                                             <span class="input-group-text">m</span>
                                                         </div>
+                                                    </div>
+                                                </td>
+                                                <td  style="width: 40%">
+                                                    <div class="input-group">
+                                                        <input type="text" class="form-control" placeholder="0" name="height[]">
+                                                        <div class="input-group-append">
+                                                            <span class="input-group-text">m</span>
+                                                        </div>
+                                                        <input type="text" class="form-control" placeholder="0" name="height[]">
+                                                        <div class="input-group-append">
+                                                            <span class="input-group-text">m</span>
+                                                        </div>
+                                                        <input type="number" class="form-control" placeholder="0" name="height[]">
                                                     </div>
                                                 </td>
                                                 <td>

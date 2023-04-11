@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('email')->unique()->nullable();
             $table->string('entreprise')->nullable();
             $table->string('type')->nullable();
+            $table->tinyInteger('price_type');
             $table->string('address')->nullable();
             $table->string('phone')->nullable();
             $table->string('fax')->nullable();
