@@ -81,6 +81,9 @@ class ProductController extends Controller
         for($i=0 ; $i<count($request->width);$i++){
         $product_line = new Productline();
         $product_line->product_id = $product->id;
+        if($request->with_1[$i]!= Null && $request->height_1[$i]!= Null && $request->with_1[$i]!= Null && $request->height_1[$i]!= Null){
+
+        }
         $product_line->width = $request->width[$i];
         $product_line->height = $request->height[$i];
         if($request->price_1){

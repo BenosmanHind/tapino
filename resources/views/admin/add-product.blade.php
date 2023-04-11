@@ -112,37 +112,38 @@
                                     </thead>
                                     <tbody id="dynamicAddRemove"  >
                                             <tr>
-                                                <td style="width:  30%">
+                                                <td  style="width: 40%">
                                                     <div class="input-group">
-                                                        <input type="text" class="form-control" placeholder="0" name="width[]">
+                                                        <input type="text" class="form-control" placeholder="0" name="with_1[]">
                                                         <div class="input-group-append">
-                                                            <span class="input-group-text">m</span>
+                                                            <span class="input-group-text">x</span>
                                                         </div>
-                                                    </div>
-                                                </td>
-                                                <td  style="width: 30%">
-                                                    <div class="input-group">
-                                                        <input type="text" class="form-control" placeholder="0" name="height[]">
-                                                        <div class="input-group-append">
-                                                            <span class="input-group-text">m</span>
-                                                        </div>
+                                                        <input type="text" class="form-control" placeholder="0" name="height_1[]">
+
                                                     </div>
                                                 </td>
                                                 <td  style="width: 40%">
                                                     <div class="input-group">
-                                                        <input type="text" class="form-control" placeholder="0" name="height[]">
+                                                        <input type="text" class="form-control" placeholder="0" name="with_2[]">
                                                         <div class="input-group-append">
-                                                            <span class="input-group-text">m</span>
+                                                            <span class="input-group-text">x</span>
                                                         </div>
-                                                        <input type="text" class="form-control" placeholder="0" name="height[]">
+                                                        <input type="text" class="form-control" placeholder="0" name="height_2[]">
+
+                                                    </div>
+                                                </td>
+                                                <td  style="width: 40%">
+                                                    <div class="input-group">
+                                                        <input type="text" class="form-control" placeholder="0" name="with_3[]">
                                                         <div class="input-group-append">
-                                                            <span class="input-group-text">m</span>
+                                                            <span class="input-group-text">x</span>
                                                         </div>
-                                                        <input type="number" class="form-control" placeholder="0" name="height[]">
+                                                        <input type="text" class="form-control" placeholder="0" name="height_3[]">
+
                                                     </div>
                                                 </td>
                                                 <td>
-                                                    <button type="button" id="add-attribute" class="btn btn-primary shadow btn-xs sharp mr-1"><i class="fa fa-plus"></i></button>
+                                                    <button type="button" id="add-product" class="btn btn-primary shadow btn-xs sharp mr-1"><i class="fa fa-plus"></i></button>
                                                 </td>
                                             </tr>
                                     </tbody>
@@ -224,32 +225,43 @@
 @push('add-dimension-scripts')
 <script type="text/javascript">
     var i = 0;
-    $("#add-attribute").click(function () {
+    $("#add-product").click(function () {
         ++i;
         $html = '<tr class="tradded">'+
-                    '<td style="width:  30%">'+
+                    '<td  style="width: 40%">'+
                         '<div class="input-group">'+
-                        '<input type="text" class="form-control" placeholder="0" name="width[]" required>'+
-                        '<div class="input-group-append">'+
-                        '<span class="input-group-text">m</span>'+
-                        '</div>'+
+                            '<input type="text" class="form-control" placeholder="0" name="with_1[]">'+
+                            '<div class="input-group-append">'+
+                                '<span class="input-group-text">x</span>'+
+                            '</div>'+
+                            '<input type="text" class="form-control" placeholder="0" name="height_1[]">'+
                         '</div>'+
                     '</td>'+
-                    '<td  style="width: 30%">'+
+                    '<td  style="width: 40%">'+
                         '<div class="input-group">'+
-                        '<input type="text" class="form-control" placeholder="0" name="height[]" required>'+
-                        '<div class="input-group-append">'+
-                        '<span class="input-group-text">m</span>'+
+                            '<input type="text" class="form-control" placeholder="0" name="with_2[]">'+
+                            '<div class="input-group-append">'+
+                                '<span class="input-group-text">x</span>'+
+                            '</div>'+
+                            '<input type="text" class="form-control" placeholder="0" name="height_2[]">'+
                         '</div>'+
+                    '</td>'+
+                    '<td  style="width: 40%">'+
+                        '<div class="input-group">'+
+                            '<input type="text" class="form-control" placeholder="0" name="with_3[]">'+
+                            '<div class="input-group-append">'+
+                                '<span class="input-group-text">x</span>'+
+                            '</div>'+
+                            '<input type="text" class="form-control" placeholder="0" name="height_3[]">'+
                         '</div>'+
                     '</td>'+
                     '<td>'+
-                       ' <button type="button" class="btn btn-danger shadow btn-xs sharp delete-attribute"><i class="fa fa-trash"></i></button>'+
+                       ' <button type="button" class="btn btn-danger shadow btn-xs sharp delete-product"><i class="fa fa-trash"></i></button>'+
                     '</td>'+
                 '</tr>'
 
         $("#dynamicAddRemove").append($html);
-        $(document).on('click', '.delete-attribute', function () {
+        $(document).on('click', '.delete-product', function () {
         $(this).parents('tr').remove();
         });
     });
