@@ -2,6 +2,14 @@
 
 @section('content')
 
+<style>
+    .symb-calcul{
+        padding: 6px;
+        background-color:  #EBEEF6;
+        border: 1px solid #dddddd;
+        font-weight: bold;
+    }
+</style>
 <div class="content-body">
     <div class="container-fluid">
         <div class="row page-titles mx-0">
@@ -104,45 +112,30 @@
                                 <table id="tblattribute" class="table table-bordered mt-3 ">
                                     <thead>
                                         <tr>
-                                            <th scope="col">Largeur </th>
-                                            <th scope="col">Hauteur</th>
-                                            <th scope="col">Elements ?</th>
+                                            <th scope="col">Dimension </th>
                                             <th scope="col">#</th>
                                         </tr>
                                     </thead>
                                     <tbody id="dynamicAddRemove"  >
                                             <tr>
-                                                <td  style="width: 40%">
+                                                <td style="width: 60%">
                                                     <div class="input-group">
-                                                        <input type="text" class="form-control" placeholder="0" name="with_1[]">
-                                                        <div class="input-group-append">
-                                                            <span class="input-group-text">x</span>
-                                                        </div>
-                                                        <input type="text" class="form-control" placeholder="0" name="height_1[]">
-
+                                                        <input type="text" class="form-control" placeholder="L" name="with_1[]">
+                                                        <span class="symb-calcul">X</span>
+                                                        <input type="text" class="form-control mr-4" placeholder="H" name="height_1[]">
+                                                        <span class="symb-calcul mr-4">+</span>
+                                                        <input type="text" class="form-control" placeholder="L" name="with_1[]">
+                                                        <span class="symb-calcul">X</span>
+                                                        <input type="text" class="form-control mr-4" placeholder="H" name="height_1[]">
+                                                        <span class="symb-calcul mr-4">+</span>
+                                                        <input type="text" class="form-control" placeholder="L" name="with_1[]">
+                                                        <span class="symb-calcul">X</span>
+                                                        <input type="text" class="form-control" placeholder="H" name="height_1[]">
                                                     </div>
                                                 </td>
-                                                <td  style="width: 40%">
-                                                    <div class="input-group">
-                                                        <input type="text" class="form-control" placeholder="0" name="with_2[]">
-                                                        <div class="input-group-append">
-                                                            <span class="input-group-text">x</span>
-                                                        </div>
-                                                        <input type="text" class="form-control" placeholder="0" name="height_2[]">
-
-                                                    </div>
-                                                </td>
-                                                <td  style="width: 40%">
-                                                    <div class="input-group">
-                                                        <input type="text" class="form-control" placeholder="0" name="with_3[]">
-                                                        <div class="input-group-append">
-                                                            <span class="input-group-text">x</span>
-                                                        </div>
-                                                        <input type="text" class="form-control" placeholder="0" name="height_3[]">
-
-                                                    </div>
-                                                </td>
-                                                <td>
+                                                
+                                             
+                                                <td  style="width: 10%">
                                                     <button type="button" id="add-product" class="btn btn-primary shadow btn-xs sharp mr-1"><i class="fa fa-plus"></i></button>
                                                 </td>
                                             </tr>
