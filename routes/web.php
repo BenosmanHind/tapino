@@ -35,5 +35,8 @@ Route::resource('admin/professionals',ProfessionalController::class);
 Route::get('productlines/{id}', [App\Http\Controllers\ProductController::class, 'productlines']);
 Route::get('add-stock/{id}', [App\Http\Controllers\StockController::class, 'modalAddStock']);
 
+
 //sale pro 
 Route::get('admin/order-pro-one', [App\Http\Controllers\SaleController::class, 'orderProOne']);
+Route::post('admin/order-pro-two', [App\Http\Controllers\SaleController::class, 'orderProTwo']);
+Route::get('admin/get-pro-info/{id}', [App\Http\Controllers\SaleController::class, 'proInfo']);

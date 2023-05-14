@@ -18,7 +18,7 @@
                 </ol>
             </div>
         </div>
-       <form action="{{url('admin/products')}}" method="POST" id="addProduct" enctype="multipart/form-data">
+       <form action="{{url('admin/order-pro-two')}}" method="POST"  enctype="multipart/form-data">
         @csrf
         <div class="row ">
             <div class="col-xl-12 col-lg-12">
@@ -30,7 +30,9 @@
                                 <div class="form-row">
                                     <div class="form-group col-md-4">
                                         <select name="professional" id="select-pro" title="selectionner un client..."  data-live-search="true"  class="selectpicker form-control">
-                                            <option value="1">client</option>
+                                            @foreach($professionals as $professional)
+                                                <option value="{{$professional->id}}"> {{$professional->name}}</option>
+                                            @endforeach
                                         </select>
                                     </div>
                                     <div class="form-group col-md-4">
@@ -38,7 +40,7 @@
                                     </div>
                                     <div class="form-group col-md-4">
                                        <b> Information sur le client :</b> <br>
-                                       <span> entreprise</span> ,  <span> prix 1</span>
+                                       <span id="pro-entreprise">... </span> ,  <span id="pro-type">...</span>
                                     </div>
                                 </div>
                     </div>
@@ -67,7 +69,7 @@
                                             <tr>
                                                 <td style="width: 30%">
                                                     <div class="input-group">
-                                                        <select name="product" id="select-product" title="produit..."  data-size="5" data-live-search="true"  class="selectpicker form-control">
+                                                        <select name="product[]" id="select-product" title="produit..."  data-size="5" data-live-search="true"  class="selectpicker form-control">
                                                             @foreach ($productlines as $line)
                                                               <option value="{{$line->id}}">{{$line->product->designation }}  &nbsp;&nbsp;   {{$line->product->reference}} &nbsp;&nbsp;  {{$line->dimension}} </option>
                                                             @endforeach
@@ -149,6 +151,28 @@
 		});
 
 	});
+
+
+
+	$("#select-pro").change(function() {
+
+		var id = $(this).val();
+
+		$.ajax({
+			url: '/admin/get-pro-info/' + id,
+			type: "GET",
+
+			success: function (res) {
+
+				$('#pro-entreprise').html(res.entreprise);
+				$('#pro-type').html("prix : " + res.price_type);
+
+			}
+		});
+
+	});
+
+
 </script>
 
 
@@ -200,15 +224,15 @@
 @push('add-dimension-scripts')
 <script type="text/javascript">
     var i = 0;
-    $("#add-attribute").click(function () {
+
+    $(document).on('click', '#add-attribute', function (){
         ++i;
+        var data = $('#select-product').html();
         $html = '<tr class="tradded">'+
                  '<td style="width: 30%">'+
                     '<div class="input-group">'+
-                       ' <select name="product" id="select-product" title="produit..."  data-live-search="true"  class="selectpicker form-control">'+
-                            '@foreach ($productlines as $line)'+
-                                '<option value="{{$line->id}}">{{$line->product->designation }}  &nbsp;&nbsp;   {{$line->product->reference}} &nbsp;&nbsp;  {{$line->dimension}} </option>'+
-                            '@endforeach'+
+                       ' <select name="product[]" title="produit..."  data-live-search="true"  class="selectpicker form-control">'+
+                           data +
                         '</select>'+
                     '</div>'+
                 '</td>'+
@@ -221,9 +245,13 @@
                     '<td>'+
                        ' <button type="button" class="btn btn-danger shadow btn-xs sharp delete-attribute"><i class="fa fa-trash"></i></button>'+
                     '</td>'+
-                '</tr>'
+                '</tr>';
 
         $("#dynamicAddRemove").append($html);
+
+
+        $('.selectpicker').selectpicker('refresh');
+
         $(document).on('click', '.delete-attribute', function () {
         $(this).parents('tr').remove();
         });

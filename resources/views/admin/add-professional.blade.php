@@ -32,9 +32,9 @@
                                         value="{{old('name')}}" name="name" placeholder="name" required >
                                 </div>
                                 <div class="form-group col-md-6">
-                                    <label>Email(optionnel):</label>
+                                    <label>Email:</label>
                                     <input type="text"  class="form-control input-default "
-                                        value="{{old('email')}}" name="email" placeholder="email@gmail.com" required >
+                                        value="{{old('email')}}" name="email" placeholder="email@gmail.com" >
                                 </div>
                             </div>
                             <div class="form-row">
@@ -43,12 +43,20 @@
                                     <input type="text"  class="form-control input-default "
                                         value="{{old('entreprise')}}" name="entreprise" placeholder="entreprise" required >
                                 </div>
+                                <div class="form-group col-md-6">
+                                    <label>Calcul prix*:</label>
+                                    <select name="price_type" class="selectpicker form-control">
+                                       <option value="1">prix1</option>
+                                       <option value="2">prix2</option>
+                                       <option value="3">prix3</option>
+                                    </select>
+                                </div>
                             </div>
                             <div class="form-row">
                                 <div class="form-group col-md-6">
-                                    <label>Téléphone*:</label>
+                                    <label>Téléphone:</label>
                                     <input type="text"  class="form-control input-default "
-                                        value="{{old('phone')}}" name="phone"  placeholder="+213 xx xx xx xx" required>
+                                        value="{{old('phone')}}" name="phone"  placeholder="+213 xx xx xx xx" >
                                 </div>
                                 <div class="form-group col-md-6">
                                     <label>Fax:</label>
@@ -66,18 +74,18 @@
                                         </select>
                                 </div>
                                 <div class="form-group col-md-6">
-                                    <label>Adresse*:</label>
-                                    <input type="text" class="form-control" value="{{old('address')}}" name="address" placeholder="Adresse" required>
+                                    <label>Adresse:</label>
+                                    <input type="text" class="form-control" value="{{old('address')}}" name="address" placeholder="Adresse" >
                                 </div>
                             </div>
                             <div class="form-row">
                                 <div class="form-group col-md-6">
-                                    <label>NIF*:</label>
+                                    <label>NIF:</label>
                                     <input type="text"  class="form-control input-default "
-                                        value="{{old('NIF')}}" name="NIF"  placeholder="NIF" required>
+                                        value="{{old('NIF')}}" name="NIF"  placeholder="NIF" >
                                 </div>
                                 <div class="form-group col-md-6">
-                                    <label>RC*:</label>
+                                    <label>RC:</label>
                                     <input type="text"  class="form-control input-default "
                                         value="{{old('RC')}}" name="RC" placeholder="RC" >
                                 </div>

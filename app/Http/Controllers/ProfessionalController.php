@@ -30,6 +30,7 @@ class ProfessionalController extends Controller
         $professional->wilaya = $request->wilaya;
         $professional->RC = $request->RC;
         $professional->NIF = $request->NIF;
+        $professional->price_type = $request->price_type;
         $professional->save();
         return redirect('admin/professionals');
     }
