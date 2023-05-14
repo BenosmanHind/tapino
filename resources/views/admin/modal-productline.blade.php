@@ -13,8 +13,7 @@
                             <thead>
                               <tr>
                                 <th scope="col">#</th>
-                                <th scope="col">Largeur</th>
-                                <th scope="col">Hauteur</th>
+                                <th scope="col">Dimension</th>
                                 <th scope="col">Total 1</th>
                                 <th scope="col">Total 2</th>
                                 <th scope="col">Total 3</th>
@@ -24,8 +23,7 @@
                             @foreach($productlines as $productline)
                               <tr>
                                 <th scope="row">{{ $loop->iteration }}</th>
-                                <td>{{ $productline->width }}</td>
-                                <td>{{ $productline->height }}</td>
+                                <td>{{ $productline->dimension }}</td>
                                 <td>@if($productline->totalm_1){{ number_format($productline->totalm_1,2) }} Da @else <i class="fas fa-minus"></i>@endif</td>
                                 <td>@if($productline->totalm_2){{ number_format($productline->totalm_2,2) }} Da @else <i class="fas fa-minus"></i>@endif</td>
                                 <td>@if($productline->totalm_3){{ number_format($productline->totalm_3,2) }} Da  @else <i class="fas fa-minus"></i>@endif</td>

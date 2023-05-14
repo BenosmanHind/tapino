@@ -58,28 +58,25 @@
                                 <table id="tblattribute" class="table table-bordered mt-3 ">
                                     <thead>
                                         <tr>
-                                            <th scope="col">Produit - réf </th>
-                                            <th scope="col">Dimensions</th>
+                                            <th scope="col">Produit - réf - dimension </th>
                                             <th scope="col">Qte</th>
+                                            <th scope="col">#</th>
                                         </tr>
                                     </thead>
                                     <tbody id="dynamicAddRemove" >
                                             <tr>
-                                                <td style="width:  30%">
+                                                <td style="width: 30%">
                                                     <div class="input-group">
-                                                        <select name="product" id="select-pro" title="produit..."  data-live-search="true"  class="selectpicker form-control">
-                                                            <option value="1">client</option>
+                                                        <select name="product" id="select-product" title="produit..."  data-size="5" data-live-search="true"  class="selectpicker form-control">
+                                                            @foreach ($productlines as $line)
+                                                              <option value="{{$line->id}}">{{$line->product->designation }}  &nbsp;&nbsp;   {{$line->product->reference}} &nbsp;&nbsp;  {{$line->dimension}} </option>
+                                                            @endforeach
                                                         </select>
+                                                        
                                                     </div>
                                                 </td>
-                                                <td  style="width: 30%">
-                                                    <div class="input-group">
-                                                        <select name="product" id="select-pro" title="dimension..."  data-live-search="true"  class="selectpicker form-control">
-                                                            <option value="1">client</option>
-                                                        </select>
-                                                    </div>
-                                                </td>
-                                                <td  style="width: 15%">
+                                               
+                                                <td  style="width: 10%">
                                                     <div class="input-group">
                                                        <input type="number" value="1" class="form-control" name='qte[]'>
                                                     </div>
@@ -103,7 +100,7 @@
             <div class="col-xl-12 col-lg-12">
                 <div class="card">
                 <div class="card-body text-center">
-                    <button type="submit" class="btn btn-primary mt-3">Ajouter le produit</button>
+                    <button type="submit" class="btn btn-primary mt-3">Voir Détails</button>
                     </form>
                 </div>
                </div>
@@ -119,6 +116,41 @@
 @endsection
 
 @push('show-dimensions-scripts')
+
+
+<script>
+	$.ajaxSetup({
+		headers: {
+			'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+		}
+    });
+
+
+	$("#select-product").change(function() {
+
+		var id = $(this).val();
+		var data ="";
+
+		$.ajax({
+			url: '/get-dimension/' + id,
+			type: "GET",
+
+			success: function (res) {
+
+				$.each(res, function(i, res) {
+				data = data + '<option value="'+ res.id+ '" >'+ res.value + '</option>';
+				});
+
+				$('#select-value').html(data);
+				$('#select-value').niceSelect('update');
+				$('#select-value').niceSelect('update');
+
+			}
+		});
+
+	});
+</script>
+
 
 <script>
     $(document).ready(function() {
@@ -171,22 +203,21 @@
     $("#add-attribute").click(function () {
         ++i;
         $html = '<tr class="tradded">'+
-                    '<td style="width:  30%">'+
-                        '<div class="input-group">'+
-                        '<input type="text" class="form-control" placeholder="0" name="width[]" required>'+
-                        '<div class="input-group-append">'+
-                        '<span class="input-group-text">m</span>'+
-                        '</div>'+
-                        '</div>'+
-                    '</td>'+
-                    '<td  style="width: 30%">'+
-                        '<div class="input-group">'+
-                        '<input type="text" class="form-control" placeholder="0" name="height[]" required>'+
-                        '<div class="input-group-append">'+
-                        '<span class="input-group-text">m</span>'+
-                        '</div>'+
-                        '</div>'+
-                    '</td>'+
+                 '<td style="width: 30%">'+
+                    '<div class="input-group">'+
+                       ' <select name="product" id="select-product" title="produit..."  data-live-search="true"  class="selectpicker form-control">'+
+                            '@foreach ($productlines as $line)'+
+                                '<option value="{{$line->id}}">{{$line->product->designation }}  &nbsp;&nbsp;   {{$line->product->reference}} &nbsp;&nbsp;  {{$line->dimension}} </option>'+
+                            '@endforeach'+
+                        '</select>'+
+                    '</div>'+
+                '</td>'+
+                
+               ' <td  style="width: 10%">'+
+                    '<div class="input-group">'+
+                        '<input type="number" value="1" class="form-control" name="qte[]">'+
+                    '</div>'+
+                '</td >'+
                     '<td>'+
                        ' <button type="button" class="btn btn-danger shadow btn-xs sharp delete-attribute"><i class="fa fa-trash"></i></button>'+
                     '</td>'+
@@ -198,6 +229,8 @@
         });
     });
 </script>
+
+
 
 
 @endpush

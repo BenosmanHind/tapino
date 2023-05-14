@@ -120,17 +120,17 @@
                                             <tr>
                                                 <td style="width: 60%">
                                                     <div class="input-group">
-                                                        <input type="text" class="form-control" placeholder="L" name="with_1[]">
+                                                        <input type="text" class="form-control" placeholder="L" name="L1[]">
                                                         <span class="symb-calcul">X</span>
-                                                        <input type="text" class="form-control mr-4" placeholder="H" name="height_1[]">
+                                                        <input type="text" class="form-control mr-4" placeholder="H" name="H1[]">
                                                         <span class="symb-calcul mr-4">+</span>
-                                                        <input type="text" class="form-control" placeholder="L" name="with_1[]">
+                                                        <input type="text" class="form-control" placeholder="L" name="L2[]">
                                                         <span class="symb-calcul">X</span>
-                                                        <input type="text" class="form-control mr-4" placeholder="H" name="height_1[]">
+                                                        <input type="text" class="form-control mr-4" placeholder="H" name="H2[]">
                                                         <span class="symb-calcul mr-4">+</span>
-                                                        <input type="text" class="form-control" placeholder="L" name="with_1[]">
+                                                        <input type="text" class="form-control" placeholder="L" name="L3[]">
                                                         <span class="symb-calcul">X</span>
-                                                        <input type="text" class="form-control" placeholder="H" name="height_1[]">
+                                                        <input type="text" class="form-control" placeholder="H" name="H3[]">
                                                     </div>
                                                 </td>
                                                 
@@ -221,33 +221,22 @@
     $("#add-product").click(function () {
         ++i;
         $html = '<tr class="tradded">'+
-                    '<td  style="width: 40%">'+
+                   '<td style="width: 60%">'+
                         '<div class="input-group">'+
-                            '<input type="text" class="form-control" placeholder="0" name="with_1[]">'+
-                            '<div class="input-group-append">'+
-                                '<span class="input-group-text">x</span>'+
-                            '</div>'+
-                            '<input type="text" class="form-control" placeholder="0" name="height_1[]">'+
-                        '</div>'+
-                    '</td>'+
-                    '<td  style="width: 40%">'+
-                        '<div class="input-group">'+
-                            '<input type="text" class="form-control" placeholder="0" name="with_2[]">'+
-                            '<div class="input-group-append">'+
-                                '<span class="input-group-text">x</span>'+
-                            '</div>'+
-                            '<input type="text" class="form-control" placeholder="0" name="height_2[]">'+
-                        '</div>'+
-                    '</td>'+
-                    '<td  style="width: 40%">'+
-                        '<div class="input-group">'+
-                            '<input type="text" class="form-control" placeholder="0" name="with_3[]">'+
-                            '<div class="input-group-append">'+
-                                '<span class="input-group-text">x</span>'+
-                            '</div>'+
-                            '<input type="text" class="form-control" placeholder="0" name="height_3[]">'+
-                        '</div>'+
-                    '</td>'+
+                            '<input type="text" class="form-control" placeholder="L" name="L1[]">'+
+                            '<span class="symb-calcul">X</span>'+
+                            '<input type="text" class="form-control mr-4" placeholder="H" name="H1[]">'+
+                            ' <span class="symb-calcul mr-4">+</span>'+
+                            '<input type="text" class="form-control" placeholder="L" name="L2[]">'+
+                            '<span class="symb-calcul">X</span>'+
+                           ' <input type="text" class="form-control mr-4" placeholder="H" name="H2[]">'+
+                            '<span class="symb-calcul mr-4">+</span>'+
+                            '<input type="text" class="form-control" placeholder="L" name="L3[]">'+
+                            '<span class="symb-calcul">X</span>'+
+                            '<input type="text" class="form-control" placeholder="H" name="H3[]">'+
+                       ' </div>'+
+                   '</td>'+
+                                                
                     '<td>'+
                        ' <button type="button" class="btn btn-danger shadow btn-xs sharp delete-product"><i class="fa fa-trash"></i></button>'+
                     '</td>'+
