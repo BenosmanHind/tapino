@@ -18,7 +18,7 @@
                 </ol>
             </div>
         </div>
-       <form action="{{url('admin/order-pro-two')}}" method="POST"  enctype="multipart/form-data">
+       <form action="{{url('admin/sale-pro-two')}}" method="POST"  enctype="multipart/form-data">
         @csrf
         <div class="row ">
             <div class="col-xl-12 col-lg-12">
@@ -74,16 +74,16 @@
                                                               <option value="{{$line->id}}">{{$line->product->designation }}  &nbsp;&nbsp;   {{$line->product->reference}} &nbsp;&nbsp;  {{$line->dimension}} </option>
                                                             @endforeach
                                                         </select>
-                                                        
+
                                                     </div>
                                                 </td>
-                                               
+
                                                 <td  style="width: 10%">
                                                     <div class="input-group">
                                                        <input type="number" value="1" class="form-control" name='qte[]'>
                                                     </div>
                                                 </td >
-                                                    
+
                                                 <td style="width: 5%">
                                                     <button type="button" id="add-attribute" class="btn btn-primary shadow btn-xs sharp mr-1"><i class="fa fa-plus"></i></button>
                                                 </td>
@@ -236,7 +236,7 @@
                         '</select>'+
                     '</div>'+
                 '</td>'+
-                
+
                ' <td  style="width: 10%">'+
                     '<div class="input-group">'+
                         '<input type="number" value="1" class="form-control" name="qte[]">'+

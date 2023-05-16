@@ -5,10 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Sale extends Model
+class Salary extends Model
 {
     use HasFactory;
-    public function professional(){
-        return $this->belongsTo(Professional::class,'professional_id');
+    public function worker()
+    {
+        return $this->belongsTo(Worker::class,'worker_id');
     }
+
 }

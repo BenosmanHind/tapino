@@ -6,6 +6,11 @@ use App\Http\Controllers\EmplacementController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\StockController;
 use App\Http\Controllers\ProfessionalController;
+use App\Http\Controllers\SaleController;
+use App\Http\Controllers\WorkerController;
+use App\Http\Controllers\SalaryController;
+use App\Http\Controllers\LoadController;
+use App\Http\Controllers\VendorController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -27,16 +32,22 @@ Route::get('/admin', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::resource('/admin/categories',CategoryController::class);
-Route::resource('admin/emplacements',EmplacementController::class);
-Route::resource('admin/products',ProductController::class);
-Route::resource('admin/stocks',StockController::class);
-Route::resource('admin/professionals',ProfessionalController::class);
-Route::get('productlines/{id}', [App\Http\Controllers\ProductController::class, 'productlines']);
-Route::get('add-stock/{id}', [App\Http\Controllers\StockController::class, 'modalAddStock']);
+Route::resource('/admin/categories',CategoryController::class)->middleware('can:admin');
+Route::resource('admin/emplacements',EmplacementController::class)->middleware('can:admin');
+Route::resource('admin/products',ProductController::class)->middleware('can:admin');
+Route::resource('admin/stocks',StockController::class)->middleware('can:admin');
+Route::resource('admin/professionals',ProfessionalController::class)->middleware('can:admin');
+Route::get('productlines/{id}', [App\Http\Controllers\ProductController::class, 'productlines'])->middleware('can:admin');
+Route::get('add-stock/{id}', [App\Http\Controllers\StockController::class, 'modalAddStock'])->middleware('can:admin');
+Route::resource('/admin/loads',LoadController::class)->middleware('can:admin');
+Route::resource('/admin/vendors',VendorController::class)->middleware('can:admin');
+Route::resource('/admin/workers',WorkerController::class)->middleware('can:admin');
+Route::resource('/admin/salaries',SalaryController::class)->middleware('can:admin');
 
-
-//sale pro 
-Route::get('admin/order-pro-one', [App\Http\Controllers\SaleController::class, 'orderProOne']);
-Route::post('admin/order-pro-two', [App\Http\Controllers\SaleController::class, 'orderProTwo']);
-Route::get('admin/get-pro-info/{id}', [App\Http\Controllers\SaleController::class, 'proInfo']);
+//sale pro
+Route::get('admin/sale-pro-one', [App\Http\Controllers\SaleController::class, 'saleProOne'])->middleware('can:admin');
+Route::post('admin/sale-pro-two', [App\Http\Controllers\SaleController::class, 'saleProTwo'])->middleware('can:admin');
+Route::post('admin/store-sale', [App\Http\Controllers\SaleController::class, 'storeSale']);
+Route::get('admin/get-pro-info/{id}', [App\Http\Controllers\SaleController::class, 'proInfo'])->middleware('can:admin');
+Route::resource('admin/sales',SaleController::class)->middleware('can:admin');
+Route::get('admin/sale-detail/{id}', [App\Http\Controllers\SaleController::class, 'saleDetail'])->middleware('can:admin');

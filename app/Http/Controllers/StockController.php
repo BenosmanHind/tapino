@@ -30,6 +30,7 @@ class StockController extends Controller
         }
         else{
             $qte = $request->qte / $productline->m2;
+
             $stock->qte = intVal($qte);
             $stock->qte_m2 = $request->qte;
         }

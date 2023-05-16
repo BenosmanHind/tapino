@@ -1,14 +1,13 @@
 @extends('layouts.dashboard-admin')
 
 @section('content')
-
 <div class="content-body">
     <div class="container-fluid">
         <div class="row page-titles mx-0">
             <div class="col-sm-6 p-md-0">
                 <div class="welcome-text">
                     <h4>Bonjour, bienvenue!</h4>
-                    <span>Ajouter une vente</span>
+                    <span>Valider la commande</span>
                 </div>
             </div>
             <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex">
@@ -18,14 +17,14 @@
                 </ol>
             </div>
         </div>
-       <form action="{{url('admin/products')}}" method="POST" id="addProduct" enctype="multipart/form-data">
+       <form action="{{url('admin/store-sale')}}" method="POST"  enctype="multipart/form-data">
         @csrf
-        
+
         <div class="row">
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
-                        <h4 class="card-title">Détails de la commande </h4>
+                        <h4 class="card-title">Détails de l'achat </h4>
                     </div>
 
                     <div class="card-body " id="variation" >
@@ -42,7 +41,7 @@
                               </tr>
                             </thead>
                             <tbody>
-                                
+
                                @foreach ($products as $product)
                                 <tr>
                                     <th scope="row">{{$loop->iteration}}</th>
@@ -55,7 +54,7 @@
                                           {{$product->totalm_2}}
                                         @elseif($professional->price_type == "3")
                                           {{$product->totalm_3}}
-                                        @endif 
+                                        @endif
                                     </td>
                                     <td>{{$qte[$loop->iteration - 1]}}</td>
                                     <td>
@@ -65,30 +64,32 @@
                                         {{$qte[$loop->iteration - 1] * $product->totalm_2}}
                                         @elseif($professional->price_type == "3")
                                         {{$qte[$loop->iteration - 1] * $product->totalm_3}}
-                                        @endif 
+                                        @endif
                                     </td>
                                 </tr>
-                                   
-                               @endforeach 
+                                 <input type="hidden" value="{{ $product->id }}" name="product[]">
+                                 <input type="hidden" value="{{ $qte[$loop->iteration - 1]}}" name="qte[]">
+                               @endforeach
 
                                <tr>
-                                    <td colspan="4" style="text-align:right;"><b>Total</b> </td>
-                                    <td > <b >{{ number_format($order->total, 2) }}  Da</b> </td>
+                                    <td colspan="5" style="text-align:right;"><b>Total</b> </td>
+                                    <td > <b >{{ number_format($total, 2) }}  Da</b> </td>
 
                                 </tr>
 
                                 <tr>
-                                    <td colspan="4" style="text-align:right;"><b>Livraison</b> </td>
+                                    <td colspan="5" style="text-align:right;"><b>Livraison</b> </td>
                                     <td >  0 Da</td>
                                 </tr>
 
                                 <tr>
-                                    <td colspan="4" style="text-align:right;"><b>Total</b> </td>
-                                    <td > <b style="font-size: 17px">{{ number_format($order->total, 2) }}  Da</b> </td>
+                                    <td colspan="5" style="text-align:right;"><b>Total</b> </td>
+                                    <td > <b style="font-size: 17px">{{ number_format($total, 2) }}  Da</b> </td>
                                 </tr>
-                              
+
                             </tbody>
                         </table>
+                        <input type="hidden" value="{{ $professional->id }}"name="professional">
 
                     </div>
                 </div>
@@ -99,7 +100,7 @@
             <div class="col-xl-12 col-lg-12">
                 <div class="card">
                 <div class="card-body text-center">
-                    <button type="submit" class="btn btn-success mt-3">Valider la commande </button>
+                    <button type="submit" class="btn btn-success mt-3">Valider la commande</button>
                     </form>
                 </div>
                </div>

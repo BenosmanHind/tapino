@@ -23,7 +23,7 @@ class ProductController extends Controller
     }
 
     public function store(Request $request){
-        
+
 
         $product = new Product();
         $product->designation = $request->designation;
@@ -103,9 +103,9 @@ class ProductController extends Controller
                     $product_line->save();
 
                 }
-            
+
             }
-         
+
         }
        return redirect('admin/products');
     }
@@ -134,25 +134,77 @@ class ProductController extends Controller
         $product->category_id = $request->category;
         $product->reference = $request->reference;
         $product->save();
-        for($i=0 ; $i<count($request->width);$i++){
-        $product_line = new Productline();
-        $product_line->product_id = $product->id;
-        if($request->with_1[$i]!= Null && $request->height_1[$i]!= Null && $request->with_1[$i]!= Null && $request->height_1[$i]!= Null){
+        for($i=0 ; $i<count($request->L1);$i++){
 
-        }
-        $product_line->width = $request->width[$i];
-        $product_line->height = $request->height[$i];
-        if($request->price_1){
-            $product_line->totalm_1 = $request->width[$i] *  $request->height[$i] * $request->price_1;
-        }
-        if($request->price_2){
-            $product_line->totalm_2 = $request->width[$i] *  $request->height[$i] * $request->price_2;
-        }
-        if($request->price_3){
-            $product_line->totalm_3 = $request->width[$i] *  $request->height[$i] * $request->price_3;
-        }
-        $product_line->m2 = $request->width[$i] *  $request->height[$i];
-        $product_line->save();
+            $product_line = new Productline();
+            $product_line->product_id = $product->id;
+
+            if($request->L2[0] == null ){
+                $product_line->dimension = $request->L1[$i].'x'.$request->H1[$i];
+                if($request->price_1){
+                    $product_line->totalm_1 = $request->L1[$i] *  $request->H1[$i] * $request->price_1;
+                }
+                if($request->price_2){
+                    $product_line->totalm_2 = $request->L1[$i] *  $request->H1[$i] * $request->price_2;
+                }
+                if($request->price_3){
+                    $product_line->totalm_3 = $request->L1[$i] *  $request->H1[$i] * $request->price_3;
+                }
+                $product_line->m2 = $request->L1[$i] *  $request->H1[$i];
+                $product_line->save();
+            }
+
+            if( $request->L2[0] != null && $request->L3[0] == null  ){
+                $product_line->dimension = '('.$request->L1[$i].'x'.$request->H1[$i].')+('.$request->L2[$i].'x'.$request->H2[$i].')';
+
+                if($request->price_1){
+                    $product_line->totalm_1 = ($request->L1[$i]*$request->H1[$i]*$request->price_1)+($request->L2[$i]* $request->H2[$i]*$request->price_1);
+                }
+                if($request->price_2){
+                    $product_line->totalm_2 = ($request->L1[$i]*$request->H1[$i]*$request->price_2)+($request->L2[$i]* $request->H2[$i]*$request->price_2);
+                }
+                if($request->price_3){
+                    $product_line->totalm_3 = ($request->L1[$i]*$request->H1[$i]*$request->price_3)+($request->L2[$i]* $request->H2[$i]*$request->price_3);
+                }
+                $product_line->m2 = ($request->L1[$i] *  $request->H1[$i]) + ($request->L2[$i] *  $request->H2[$i]);
+                $product_line->save();
+            }
+
+            if($request->L3 && $request->L3[0] != null  ){
+
+                if( $request->L2[$i] == $request->L3[$i] && $request->H2[$i] == $request->H3[$i] ){
+                    $product_line->dimension = '('.$request->L1[$i].'x'.$request->H1[$i].')+2x('.$request->L2[$i].'x'.$request->H2[$i].')';
+                    if($request->price_1){
+                        $product_line->totalm_1 = ($request->L1[$i]*$request->H1[$i]*$request->price_1)+2*($request->L2[$i]* $request->H2[$i]*$request->price_1);
+                    }
+                    if($request->price_2){
+                        $product_line->totalm_2 = ($request->L1[$i]*$request->H1[$i]*$request->price_2)+2*($request->L2[$i]* $request->H2[$i]*$request->price_2);
+                    }
+                    if($request->price_3){
+                        $product_line->totalm_3 = ($request->L1[$i]*$request->H1[$i]*$request->price_3)+2*($request->L2[$i]* $request->H2[$i]*$request->price_3);
+                    }
+                    $product_line->m2 = ($request->L1[$i] *  $request->H1[$i]) + 2* ($request->L2[$i] *  $request->H2[$i]);
+                    $product_line->save();
+
+                }
+                else{
+                    $product_line->dimension = '('.$request->L1[$i].'x'.$request->H1[$i].')+('.$request->L2[$i].'x'.$request->H2[$i].')+('.$request->L3[$i].'x'.$request->H3[$i].')';
+                    if($request->price_1){
+                        $product_line->totalm_1 = ($request->L1[$i]*$request->H1[$i]*$request->price_1)+ ($request->L2[$i]* $request->H2[$i]*$request->price_1) + ($request->L3[$i]* $request->H3[$i]*$request->price_1);
+                    }
+                    if($request->price_2){
+                        $product_line->totalm_2 = ($request->L1[$i]*$request->H1[$i]*$request->price_2)+($request->L2[$i]* $request->H2[$i]*$request->price_2)+ ($request->L3[$i]* $request->H3[$i]*$request->price_2);
+                    }
+                    if($request->price_3){
+                        $product_line->totalm_3 = ($request->L1[$i]*$request->H1[$i]*$request->price_3)+($request->L2[$i]* $request->H2[$i]*$request->price_3)+ ($request->L3[$i]* $request->H3[$i]*$request->price_3);
+                    }
+                    $product_line->m2 = ($request->L1[$i] *  $request->H1[$i]) +  ($request->L2[$i] *  $request->H2[$i]) +  ($request->L3[$i] *  $request->H3[$i]);
+                    $product_line->save();
+
+                }
+
+            }
+
         }
        return redirect('admin/products');
     }

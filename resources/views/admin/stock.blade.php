@@ -44,7 +44,7 @@
                                     <td>{{$loop->iteration}}</td>
                                     <td>{{$productline->product->designation}} </td>
                                     <td>{{$productline->product->reference}}</td>
-                                    <td>{{$productline->width}} x {{ $productline->height }}</td>
+                                    <td>{{$productline->dimension}} </td>
                                     <td>{{$productline->qte()}}</td>
                                     <td>{{$productline->qteM2()}} m²</td>
                                     <td>
@@ -53,7 +53,7 @@
                                         </div>
                                         </form>
                                     </td>
-                                 </tr>
+                                </tr>
                              @endforeach
                         </tbody>
                         </table>

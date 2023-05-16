@@ -16,6 +16,7 @@ return new class extends Migration
             $table->unsignedBigInteger('professional_id')->unsigned();
             $table->string('address')->nullable();
             $table->string('wilaya')->nullable();
+            $table->string('code')->nullable();
             $table->float('total')->nullable();
             $table->float('promo')->nullable();
             $table->string('type_promo')->nullable();
