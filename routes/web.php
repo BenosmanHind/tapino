@@ -47,7 +47,9 @@ Route::resource('/admin/salaries',SalaryController::class)->middleware('can:admi
 //sale pro
 Route::get('admin/sale-pro-one', [App\Http\Controllers\SaleController::class, 'saleProOne'])->middleware('can:admin');
 Route::post('admin/sale-pro-two', [App\Http\Controllers\SaleController::class, 'saleProTwo'])->middleware('can:admin');
+Route::post('admin/edit-sale-pro-two', [App\Http\Controllers\SaleController::class, 'editSaleProTwo'])->middleware('can:admin');
 Route::post('admin/store-sale', [App\Http\Controllers\SaleController::class, 'storeSale']);
+Route::post('admin/update-sale', [App\Http\Controllers\SaleController::class, 'update']);
 Route::get('admin/get-pro-info/{id}', [App\Http\Controllers\SaleController::class, 'proInfo'])->middleware('can:admin');
 Route::resource('admin/sales',SaleController::class)->middleware('can:admin');
 Route::get('admin/sale-detail/{id}', [App\Http\Controllers\SaleController::class, 'saleDetail'])->middleware('can:admin');

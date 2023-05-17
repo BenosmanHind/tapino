@@ -172,8 +172,6 @@
     </div>
 </div>
 
-<div id="modal-add-attribute">
-</div>
 
 @endsection
 

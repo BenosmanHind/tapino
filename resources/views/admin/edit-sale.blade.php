@@ -18,7 +18,7 @@
                 </ol>
             </div>
         </div>
-       <form action="{{url('admin/sale-pro-two')}}" method="POST"  enctype="multipart/form-data">
+       <form action="{{url('admin/edit-sale-pro-two')}}" method="POST"  enctype="multipart/form-data">
         @csrf
         <div class="row ">
             <div class="col-xl-12 col-lg-12">
@@ -27,26 +27,26 @@
                         <h4 class="card-title">Vente</h4>
                     </div>
                     <div class="card-body">
-                                <div class="form-row">
-                                    <div class="form-group col-md-4">
-                                        <select name="professional" id="select-pro" title="selectionner un client..."  data-live-search="true"  class="selectpicker form-control">
-                                            @foreach($professionals as $professional)
-                                                <option value="{{$professional->id}}" @if($sale->professional_id == $professional->id) selected @endif> {{$professional->name}}</option>
-                                            @endforeach
-                                        </select>
-                                    </div>
-                                    <div class="form-group col-md-4">
-                                       <a href="#" class="btn btn-primary btn-sm"> Ajouter client </a>
-                                    </div>
-                                    <div class="form-group col-md-4">
-                                       <b> Information sur le client :</b> <br>
-                                       <span id="pro-entreprise">{{ $sale->professional->entreprise }} </span> ,  <span id="pro-type">{{ $sale->professional->price_type }}</span>
-                                    </div>
-                                </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-4">
+                                <select name="professional" id="select-pro" title="selectionner un client..."  data-live-search="true"  class="selectpicker form-control">
+                                    @foreach($professionals as $professional)
+                                        <option value="{{$professional->id}}" @if($sale->professional_id == $professional->id) selected @endif> {{$professional->name}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="form-group col-md-4">
+                                <a href="#" class="btn btn-primary btn-sm"> Ajouter client </a>
+                            </div>
+                            <div class="form-group col-md-4">
+                                <b> Information sur le client :</b> <br>
+                                <span id="pro-entreprise">{{ $sale->professional->entreprise }} </span> ,  <span id="pro-type">{{ $sale->professional->price_type }}</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-     </div>
+        </div>
         <div class="row">
             <div class="col-md-12">
                 <div class="card">
@@ -99,7 +99,7 @@
                                     </tbody>
                                 </table>
                              </div>
-
+                            <input type="hidden" value="{{ $sale->id }}" name="sale">
                         </div>
                     </div>
                 </div>
@@ -120,8 +120,6 @@
     </div>
 </div>
 
-<div id="modal-add-attribute">
-</div>
 
 @endsection
 

@@ -17,7 +17,7 @@
                 </ol>
             </div>
         </div>
-       <form action="{{url('admin/store-sale')}}" method="POST"  enctype="multipart/form-data">
+       <form action="{{url('admin/update-sale')}}" method="POST"  enctype="multipart/form-data">
         @csrf
 
         <div class="row">
@@ -128,6 +128,8 @@
 
 
                         <input type="hidden" value="{{ $professional->id }}"name="professional">
+
+                        <input type="hidden" value="{{ $sale->id }}"name="sale">
 
 
                     </div>
