@@ -458,5 +458,6 @@
 @stack('select-productline-scripts')
 @stack('modal-add-stock-scripts')
 @stack('order-detail-scripts')
+@stack('calculate-totla-script')
 </body>
 </html>

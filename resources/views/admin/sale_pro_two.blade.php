@@ -76,19 +76,57 @@
                                     <td > <b >{{ number_format($total, 2) }}  Da</b> </td>
 
                                 </tr>
+                               <tr>
+                                    <td colspan="5" style="text-align:right;"><b>Remise</b> </td>
+                                    <td class="remise" > <b > 0 Da</b> </td>
 
-                                <tr>
-                                    <td colspan="5" style="text-align:right;"><b>Livraison</b> </td>
-                                    <td >  0 Da</td>
                                 </tr>
 
                                 <tr>
-                                    <td colspan="5" style="text-align:right;"><b>Total</b> </td>
-                                    <td > <b style="font-size: 17px">{{ number_format($total, 2) }}  Da</b> </td>
+                                    <td colspan="5" style="text-align:right;"><b>TVA (19%) : </b> </td>
+                                    <td class="tva">  0 Da</td>
+                                </tr>
+
+                                <tr>
+                                    <td colspan="5" style="text-align:right;"><b>Total :</b> </td>
+                                    <td > <b class="total-amount" data-total = {{ $total }} style="font-size: 17px">{{ number_format($total, 2) }}  Da</b> </td>
                                 </tr>
 
                             </tbody>
+
                         </table>
+
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label for="">Remise </label>
+                                    <select class="form-control" id="discount-type">
+                                      <option>Sans remise</option>
+                                      <option value="0">Fixe</option>
+                                      <option value="1">pourcentage</option>
+                                    </select>
+                                  </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label for=""> valeur</label>
+                                    <input type="texte" class="form-control discount-value" id="exampleFormControlInput1" placeholder="name@example.com">
+                                  </div>
+                            </div>
+                            <div class="col-md-3 mt-4">
+                                <div class="form-check">
+                                    <input class="form-check-input tva-checkbox" type="checkbox" value="" id="defaultCheck1">
+                                    <label class="form-check-label" for="defaultCheck1">
+                                      Tva 19%
+                                    </label>
+                                  </div>
+                            </div>
+                            <div class="col-md-3 ">
+                            <button type="button" class="btn btn-success mt-3 calculate-total">Calculer le total</button>
+                            <div class="col-md-3 mt-4">
+                        </div>
+
+
                         <input type="hidden" value="{{ $professional->id }}"name="professional">
 
                     </div>
@@ -113,5 +151,58 @@
 @endsection
 
 
+@push('calculate-totla-script')
 
+<script>
+
+      // Fonction pour recalculer le total en fonction de la remise et de la TVA
+      function recalculateTotal() {
+        var total = $(".total-amount").data('total'); // Récupérer le montant total initial
+
+        // Vérifier si une remise est appliquée et obtenir le type et la valeur de la remise
+        var discountType = $("#discount-type").val();
+        var discountValue =$(".discount-value").val();
+
+        // Calculer le montant de la remise en fonction du type
+        var discountAmount = 0;
+        if (discountType == 0) {
+          discountAmount = discountValue;
+        } else if (discountType == 1) {
+          discountAmount = (total * discountValue )/ 100;
+        }
+
+        // Appliquer la remise au montant total
+        total -= discountAmount;
+
+        // Vérifier si la TVA est sélectionnée
+        if ($(".tva-checkbox").is(":checked")) {
+          var tvaAmount = total * 0.19; // Calculer le montant de la TVA (19%)
+          total += tvaAmount;
+        }
+
+        // Mettre à jour le montant total affiché
+        $(".total-amount").text((total).toLocaleString(undefined, { minimumFractionDigits: 2 }) + " Da");
+            // Mettre à jour la valeur de la remise affichée
+        $(".remise").text(discountAmount + " Da");
+
+        // Mettre à jour la valeur de la TVA affichée
+        if ($(".tva-checkbox").is(":checked")) {
+         $(".tva").text(tvaAmount + " Da");
+        }
+        else{
+
+            $(".tva").text("0 Da");
+        }
+      }
+
+      // Écouter les événements de modification de la remise et de la TVA
+      $(".calculate-total").click(function() {
+        recalculateTotal();
+      });
+
+
+
+    </script>
+
+@endpush
 

@@ -103,7 +103,7 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
-                        <h4 class="card-title">Dimensions </h4>
+                        <h4 class="card-title">Dimensions (m)</h4>
                     </div>
 
                     <div class="card-body " id="variation" >
@@ -133,8 +133,8 @@
                                                         <input type="text" class="form-control" placeholder="H" name="H3[]">
                                                     </div>
                                                 </td>
-                                                
-                                             
+
+
                                                 <td  style="width: 10%">
                                                     <button type="button" id="add-product" class="btn btn-primary shadow btn-xs sharp mr-1"><i class="fa fa-plus"></i></button>
                                                 </td>
@@ -236,7 +236,7 @@
                             '<input type="text" class="form-control" placeholder="H" name="H3[]">'+
                        ' </div>'+
                    '</td>'+
-                                                
+
                     '<td>'+
                        ' <button type="button" class="btn btn-danger shadow btn-xs sharp delete-product"><i class="fa fa-trash"></i></button>'+
                     '</td>'+
