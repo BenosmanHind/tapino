@@ -96,36 +96,57 @@ class SaleController extends Controller
                 $i++;
             }
         }
-       $sale->total = $total;
 
-       $sale->save();
-       $date = Carbon::now()->format('y');
-       $sale->code = 'tapino'.'-'.$date.'-'.$sale->id;
-       $sale->save();
-       foreach($products as $product){
-         $saleline = new Saleline();
-         $saleline->sale_id = $sale->id;
-         $saleline->productline_id = $product->id;
-         $saleline->qte = $request->qte[$j];
-         if($professional->price_type == 1){
-            $saleline->price = $product->totalm_1;
-            $saleline->total = $request->qte[$j] * $product->totalm_1 ;
+        $discountAmount = 0;
+        $discountValue = $request->value;
+        if ($request->discountType == 0) {
+            $discountAmount = $discountValue;
+            $sale->promo = $discountAmount;
+            $sale->type_promo = $request->discountType;
+            $total -= $discountAmount;
+          }
+        else if ($request->discountType == 1) {
+            $discountAmount = ($total * $discountValue )/ 100;
+            $sale->promo = $discountAmount;
+            $sale->type_promo = $request->discountType;
+            $total -= $discountAmount;
+          }
+        if($request->check_tva == 1){
+            $tvaAmount = $total * 0.19; // Calculer le montant de la TVA (19%)
+            $total += $tvaAmount;
+            $sale->tva =  $tvaAmount;
         }
-        if($professional->price_type == 2){
-            $saleline->price = $product->totalm_2;
-            $saleline->total = $request->qte[$j] * $product->totalm_2 ;
-        }
-        if($professional->price_type == 3){
-            $saleline->price = $product->totalm_3;
-            $saleline->total = $request->qte[$j] * $product->totalm_3 ;
-        }
-        $stock = new Stock();
-        $stock->productline_id = $product->id;
-        $stock->qte = $request->qte[$j];
-        $stock->qte_m2 = $request->qte[$j] * $product->m2;
-        $stock->type = 'destockage';
-        $stock->save();
-        $saleline->save();
+
+
+        $sale->total = $total;
+        $sale->save();
+        $date = Carbon::now()->format('y');
+        $sale->code = 'tapino'.'-'.$date.'-'.$sale->id;
+        $sale->save();
+        foreach($products as $product){
+            $saleline = new Saleline();
+            $saleline->sale_id = $sale->id;
+            $saleline->productline_id = $product->id;
+            $saleline->qte = $request->qte[$j];
+            if($professional->price_type == 1){
+                $saleline->price = $product->totalm_1;
+                $saleline->total = $request->qte[$j] * $product->totalm_1 ;
+            }
+            if($professional->price_type == 2){
+                $saleline->price = $product->totalm_2;
+                $saleline->total = $request->qte[$j] * $product->totalm_2 ;
+            }
+            if($professional->price_type == 3){
+                $saleline->price = $product->totalm_3;
+                $saleline->total = $request->qte[$j] * $product->totalm_3 ;
+            }
+            $stock = new Stock();
+            $stock->productline_id = $product->id;
+            $stock->qte = $request->qte[$j];
+            $stock->qte_m2 = $request->qte[$j] * $product->m2;
+            $stock->type = 'destockage';
+            $stock->save();
+            $saleline->save();
        }
        return redirect('admin/sales');
     }

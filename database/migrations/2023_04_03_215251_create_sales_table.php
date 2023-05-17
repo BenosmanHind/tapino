@@ -19,7 +19,8 @@ return new class extends Migration
             $table->string('code')->nullable();
             $table->float('total')->nullable();
             $table->float('promo')->nullable();
-            $table->string('type_promo')->nullable();
+            $table->tinyInteger('type_promo')->nullable();
+            $table->float('tva')->nullable();
             $table->foreign('professional_id')->references('id')->on('professionals')->onDelete('cascade');
             $table->timestamps();
         });

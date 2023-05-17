@@ -100,7 +100,7 @@
                             <div class="col-md-3">
                                 <div class="form-group">
                                     <label for="">Remise </label>
-                                    <select class="form-control" id="discount-type">
+                                    <select class="form-control" id="discount-type" name="discountType">
                                       <option>Sans remise</option>
                                       <option value="0">Fixe</option>
                                       <option value="1">pourcentage</option>
@@ -110,12 +110,12 @@
                             <div class="col-md-3">
                                 <div class="form-group">
                                     <label for=""> valeur</label>
-                                    <input type="texte" class="form-control discount-value" id="exampleFormControlInput1" placeholder="name@example.com">
+                                    <input type="texte" class="form-control discount-value" id="exampleFormControlInput1" name="value" placeholder="name@example.com">
                                   </div>
                             </div>
                             <div class="col-md-3 mt-4">
                                 <div class="form-check">
-                                    <input class="form-check-input tva-checkbox" type="checkbox" value="" id="defaultCheck1">
+                                    <input class="form-check-input tva-checkbox" type="checkbox" value="1" id="defaultCheck1" name="check_tva">
                                     <label class="form-check-label" for="defaultCheck1">
                                       Tva 19%
                                     </label>

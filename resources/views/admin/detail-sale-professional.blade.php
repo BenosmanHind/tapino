@@ -70,12 +70,18 @@
                                     <td > <b >{{ number_format($sale->total, 2) }}  Da</b> </td>
 
                                 </tr>
-
+                                @if($sale->promo)
                                 <tr>
-                                    <td colspan="5" style="text-align:right;"><b>Livraison</b> </td>
-                                    <td >  0 Da</td>
+                                    <td colspan="5" style="text-align:right;"><b>Remise</b> </td>
+                                    <td >  {{ $sale->promo }} Da</td>
                                 </tr>
-
+                                @endif
+                                @if($sale->tva)
+                                <tr>
+                                    <td colspan="5" style="text-align:right;"><b>TVA (19%)</b> </td>
+                                    <td >  {{ $sale->tva }} Da</td>
+                                </tr>
+                                @endif
                                 <tr>
                                     <td colspan="5" style="text-align:right;"><b>Total</b> </td>
                                     <td > <b style="font-size: 17px">{{ number_format($sale->total, 2) }}  Da</b> </td>
