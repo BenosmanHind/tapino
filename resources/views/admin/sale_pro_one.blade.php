@@ -51,7 +51,7 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
-                        <h4 class="card-title">Détails de commande </h4>
+                        <h4 class="card-title">Détails de vente </h4>
                     </div>
 
                     <div class="card-body " id="variation" >

@@ -7,13 +7,13 @@
             <div class="col-sm-6 p-md-0">
                 <div class="welcome-text">
                     <h4>Bonjour, bienvenue!</h4>
-                    <span>Valider la commande</span>
+                    <span>Valider la vente</span>
                 </div>
             </div>
             <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="{{url('/admin')}}">Dashboard</a></li>
-                    <li class="breadcrumb-item active"><a href="javascript:void(0)">Ajouter vente</a></li>
+                    <li class="breadcrumb-item active"><a href="javascript:void(0)">Vente</a></li>
                 </ol>
             </div>
         </div>
@@ -24,7 +24,7 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
-                        <h4 class="card-title">Détails de l'achat </h4>
+                        <h4 class="card-title">Détails de la vente</h4>
                     </div>
 
                     <div class="card-body " id="variation" >
@@ -138,7 +138,7 @@
             <div class="col-xl-12 col-lg-12">
                 <div class="card">
                 <div class="card-body text-center">
-                    <button type="submit" class="btn btn-success mt-3">Valider la commande</button>
+                    <button type="submit" class="btn btn-success mt-3">Valider la vente</button>
                     </form>
                 </div>
                </div>

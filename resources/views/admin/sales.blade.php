@@ -6,7 +6,7 @@
         <div class="row page-titles">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item active"><a href="{{ url('/admin') }}">Dashboard</a></li>
-                <li class="breadcrumb-item"><a href="javascript:void(0)">Commandes</a></li>
+                <li class="breadcrumb-item"><a href="javascript:void(0)">Ventes</a></li>
             </ol>
         </div>
 
@@ -14,8 +14,8 @@
         <div class="col-12">
                 <div class="card">
                     <div class="card-header">
-                        <h4 class="card-title">Commandes</h4>
-                        <a href="{{url('admin/order-pro-one')}}" type="button"  class="btn btn-primary mt-3">Ajouter</a>
+                        <h4 class="card-title">Ventes</h4>
+                        <a href="{{url('admin/sale-pro-one')}}" type="button"  class="btn btn-primary mt-3">Ajouter</a>
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
