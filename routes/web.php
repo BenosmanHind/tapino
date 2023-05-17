@@ -11,6 +11,7 @@ use App\Http\Controllers\WorkerController;
 use App\Http\Controllers\SalaryController;
 use App\Http\Controllers\LoadController;
 use App\Http\Controllers\VendorController;
+use App\Http\Controllers\PosController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -53,3 +54,7 @@ Route::post('admin/update-sale', [App\Http\Controllers\SaleController::class, 'u
 Route::get('admin/get-pro-info/{id}', [App\Http\Controllers\SaleController::class, 'proInfo'])->middleware('can:admin');
 Route::resource('admin/sales',SaleController::class)->middleware('can:admin');
 Route::get('admin/sale-detail/{id}', [App\Http\Controllers\SaleController::class, 'saleDetail'])->middleware('can:admin');
+
+// pos system 
+
+Route::resource('admin/pos',PosController::class);
