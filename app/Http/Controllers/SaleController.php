@@ -155,4 +155,12 @@ class SaleController extends Controller
         $salelines = Saleline::where('sale_id',$id)->get();
         return view('admin.detail-sale-professional',compact('sale','salelines'));
     }
+
+    public function edit($id){
+        $sale = Sale::find($id);
+        $salelines = Saleline::where('sale_id',$id)->get();
+        $productlines = Productline::with('product')->get();
+        $professionals = Professional::orderByDesc('created_at')->get();
+        return view('admin.edit-sale',compact('sale','salelines','productlines','professionals'));
+    }
 }

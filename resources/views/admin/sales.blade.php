@@ -43,7 +43,7 @@
                                         <td>
                                             <div class="d-flex">
                                                 <a href="{{asset('admin/sale-detail/'.$sale->id) }}" class="btn btn-success shadow btn-xs sharp mr-1"><i class="fas fa-eye"></i></a>
-                                                <a href="#" class="btn btn-primary shadow btn-xs sharp mr-1"><i class="fas fa-pencil-alt"></i></a>
+                                                <a href="{{asset('admin/sales/'.$sale->id.'/edit')}}" class="btn btn-primary shadow btn-xs sharp mr-1"><i class="fas fa-pencil-alt"></i></a>
 
                                                 <form action="" method="post">
                                                     {{csrf_field()}}

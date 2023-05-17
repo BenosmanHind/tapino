@@ -138,7 +138,7 @@
                                             @if($loop->first)
                                             <td style="width: 10%">
                                                 <button type="button"  class="btn btn-primary shadow btn-xs sharp mr-1 add-product"><i class="fa fa-plus"></i></button>
-                                                <button type="button" class="btn btn-danger shadow btn-xs sharp delete-product"><i class="fa fa-trash"></i></button>
+
                                             </td>
                                             @else
                                             <td>

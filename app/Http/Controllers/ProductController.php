@@ -216,5 +216,9 @@ class ProductController extends Controller
         return view('admin.modal-productline',compact('productlines','product'));
     }
 
-
+    public function destroy($id){
+        $product = Product::find($id);
+        $product->delete();
+        return redirect('admin/products');
+    }
 }
