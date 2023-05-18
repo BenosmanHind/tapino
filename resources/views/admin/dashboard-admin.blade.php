@@ -32,7 +32,7 @@
                                     <div class="card-body pb-0 px-3 pt-2">
                                         <div class="row">
                                             <div class="col">
-                                                <h3 class="mb-1">{{$total_m2}} Da</h3>
+                                                <h3 class="mb-1">{{$total_m2}}  m²</h3>
                                                 <span class="text-success">Total des m²</span>
                                             </div>
                                         </div>
@@ -56,7 +56,7 @@
                                     <div class="card-body pb-0 px-3 pt-2">
                                         <div class="row">
                                             <div class="col">
-                                                <h3 class="mb-1">{{$total}} </h3>
+                                                <h3 class="mb-1">{{$total}}  m²</h3>
                                                 <span class="text-success">Total de stock</span>
                                             </div>
                                         </div>
