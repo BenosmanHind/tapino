@@ -17,7 +17,7 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
-                        <h4 class="card-title">Détails de la commande </h4>
+                        <h4 class="card-title">Détails de la vente </h4>
                     </div>
 
                     <div class="card-body print-section" id="printable">
@@ -32,8 +32,8 @@
 
                             <div class="infos-client" style="width: 350px;">
                                 <h3 >Bon de livraison N° {{ $sale->code }}</h3> <br>
-                                <p ><b> Nom :</b> {{$sale->professional->name}}<br>
-                                <b> Tél: </b> {{$sale->professional->phone}}  <br>
+                                <p ><b> Nom :</b> {{$sale->saletable->name}}<br>
+                                <b> Tél: </b> {{$sale->saletable->phone}}  <br>
                                 <b> Adresse:</b> {{$sale->address}} <br>
                                  <b> Wilaya:</b>  {{ucfirst($sale->wilaya)}}<br>
                                 Date: {{$sale->created_at->format('Y-m-d')}} </p><br>
