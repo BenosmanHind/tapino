@@ -70,7 +70,7 @@ class SaleController extends Controller
        $j = 0;
        $professional = Professional::find($request->professional);
        $sale = new Sale();
-       $sale->professional_id = $professional->id;
+
        $sale->address = $professional->address;
        $sale->wilaya = $professional->wilaya;
 
@@ -118,7 +118,7 @@ class SaleController extends Controller
 
 
         $sale->total = $total;
-        $sale->save();
+        $professional->sales()->save($sale);
         $date = Carbon::now()->format('y');
         $sale->code = 'tapino'.'-'.$date.'-'.$sale->id;
         $sale->save();

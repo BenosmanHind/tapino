@@ -12,6 +12,7 @@ use App\Http\Controllers\SalaryController;
 use App\Http\Controllers\LoadController;
 use App\Http\Controllers\VendorController;
 use App\Http\Controllers\PosController;
+use App\Http\Controllers\CustomerController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -55,7 +56,8 @@ Route::get('admin/get-pro-info/{id}', [App\Http\Controllers\SaleController::clas
 Route::resource('admin/sales',SaleController::class)->middleware('can:admin');
 Route::get('admin/sale-detail/{id}', [App\Http\Controllers\SaleController::class, 'saleDetail'])->middleware('can:admin');
 
-// pos system 
+// pos system
 
 Route::resource('admin/pos',PosController::class);
 Route::resource('admin/sales-customer',PosController::class);
+Route::resource('admin/customers',CustomerController::class);
