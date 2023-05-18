@@ -34,8 +34,8 @@ $(".product-select").on('click', function() {
                 '<td>'+name+'</td>'+
                 '<td>'+parent+'</td>'+
                 '<input type="hidden" data-id='+id+' value='+price+' name="prices['+j+']" >'+ 
-                '<input type="hidden"  value='+id+' name="parts['+j+']" >'+ 
-                '<td> <input id="'+id+'" data-price='+price+'  name="qtes['+j+']" type="number" class="form-control qte-inp" value="1" max="'+qte+'" min="1" ></td>'+
+                '<input type="hidden"  value='+id+' name="product[]" >'+ 
+                '<td> <input id="'+id+'" data-price='+price+'  name="qtes[]" type="number" class="form-control qte-inp" value="1" max="'+qte+'" min="1" ></td>'+
                 '<td class="item-price"><b id="price'+id+'">'+price+'</b></td>'+
                 '<td data="data-id"><a href="#" class="delete-item-order"><i class="fa fa-times" aria-hidden="true"></i></a></td>'
                     

@@ -35,7 +35,7 @@
                                     @foreach($sales as $sale)
                                     <tr>
                                         <td>{{$loop->iteration}}</td>
-                                        <td>{{$sale->professional->name}}</td>
+                                        <td>{{$sale->saletable->name}}</td>
                                         <td>{{$sale->wilaya}}</td>
                                         <td>{{$sale->address}}</td>
                                         <td>{{$sale->total}}</td>

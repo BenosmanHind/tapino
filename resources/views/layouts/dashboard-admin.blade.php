@@ -51,8 +51,11 @@
             Nav header start
         ***********************************-->
         <div class="nav-header">
-            <a href="index.html" class="brand-logo">
-                <img src="{{asset('front/assets/images/froidis-white.png')}}" alt="Image">
+            <a href="{{asset('admin')}}" class="brand-logo">
+
+                <img class="logo-abbr" src="{{asset('dashboard/images/logo-white.png')}}" alt="">
+                <img class="logo-compact" src="{{asset('dashboard/images/logo-text-white.png')}}" alt="">
+                <img class="brand-title" src="{{asset('dashboard/images/logo-text-white.png')}}" alt="">
             </a>
 
             <div class="nav-control">

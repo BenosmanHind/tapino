@@ -58,3 +58,4 @@ Route::get('admin/sale-detail/{id}', [App\Http\Controllers\SaleController::class
 // pos system 
 
 Route::resource('admin/pos',PosController::class);
+Route::resource('admin/sales-customer',PosController::class);

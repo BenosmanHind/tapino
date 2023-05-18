@@ -4,7 +4,7 @@
 
 
 <div class="content-body">
-    <form action="{{url('/dashboard-provider/sales')}}" method="POST">
+    <form action="{{url('/admin/sales-customer')}}" method="POST">
         @csrf
     <div class="container-fluid">
        
@@ -24,7 +24,7 @@
                         <div class="row">
                             <div class="col-3" >
                                 <label for="" style="  display: block;">Client</label>
-                                <select class="select-customer"  name="customer_id" class="selectpicker" data-live-search="true" style="  display: block;" required>
+                                <select class="select-customer"  name="customer" class="selectpicker" data-live-search="true" style="  display: block;" required>
                                 
                                     @foreach ($customers as $customer)
                                         <option  value="{{$customer->id}}"> {{ $customer->name}}</option>
@@ -125,12 +125,12 @@
                             <b>Order total :</b>
                             <input type="text" id='total-price' name="total_price" class="form-control total-order total-price mt-2" value="0.00" >
 
-                            <div class="form-check mt-2">
+                            {{--<div class="form-check mt-2">
                                 <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" disabled>
                                 <label class="form-check-label" for="flexCheckDefault">
                                 <b>Print sale invoice </b>
                                 </label>
-                              </div>
+                              </div>--}}
                         </div>
 
                         <div class="col-md-4">
@@ -149,14 +149,13 @@
                 <div class="card">
                     <div class="card-body ">
                             <div class="row mt-2 d-flex justify-content-center">
-                                <button type="submit" class="btn btn-success btn-lg btn-block" style="width: 400px;height: 60px">Validate</button>
+                                <button type="submit" class="btn btn-success btn-lg btn-block" style="width: 400px;height: 60px">Validation</button>
                             </div>
                              
                              <div class="row mt-2 d-flex justify-content-center">
-                                 <a href="{{asset('/dashboard-provider/customers/create')}}">  <button type="button" class="btn btn-light mr-2" style="height: 50px">Add customer</button></a> 
-                                <a href="{{asset('/dashboard-provider/sales')}}"><button type="button" class="btn btn-light mr-2 " style="height: 50px">Sales</button></a> 
-                               <a href="{{asset('/dashboard-provider/global-shop')}}"> <button type="button" class="btn btn-light mr-2" style="height: 50px">Products</button></a> 
-                                <a href="{{asset('/dashboard-provider/products-store')}}"> <button type="button" class="btn btn-light mr-2" style="height: 50px">Store</button></a> 
+                                 <a href="{{asset('/dashboard-provider/customers/create')}}">  <button type="button" class="btn btn-light mr-2" style="height: 50px">Clients</button></a> 
+                                <a href="{{asset('/dashboard-provider/sales')}}"><button type="button" class="btn btn-light mr-2 " style="height: 50px">Ventes</button></a> 
+                               <a href="{{asset('/dashboard-provider/global-shop')}}"> <button type="button" class="btn btn-light mr-2" style="height: 50px">Produits</button></a> 
                              </div>
                           
                     </div>
