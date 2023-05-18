@@ -27,12 +27,12 @@ class PosController extends Controller
         $sale->total_f = $request->total_promo;
         $customer = Customer::find($request->customer);
         $customer->sales()->save($sale);
-       
+
         $products = Productline::whereIn('id', $ids)->get();
-   
+
         $i = 0;
 
-        
+
         foreach( $products as $product ){
             $saleline  = new Saleline();
             $saleline->sale_id = $sale->id;
@@ -42,10 +42,10 @@ class PosController extends Controller
             $saleline->total = $request->qtes[$i] *  $product->totalm_1;
             $saleline->save();
             $i++;
-        
+
         }
-      
-        return redirect('dashboard-provider/sales')->with('success','Sale added successfully :)');
+
+        return redirect('admin/customer-sales');
     }
 
 }

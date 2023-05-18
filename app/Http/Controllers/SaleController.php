@@ -14,10 +14,14 @@ use Laravel\Sanctum\Sanctum;
 
 class SaleController extends Controller
 {
-    public function index(){
-         $sales = Sale::orderByDesc('created_at')->get();
-         return view('admin.sales',compact('sales'));
+    public function saleProfessional(){
+         $sales = Sale::where('saletable_type','App\Models\Professional')->orderByDesc('created_at')->get();
+         return view('admin.professional-sales',compact('sales'));
     }
+    public function saleCustomer(){
+        $sales = Sale::where('saletable_type','App\Models\Customer')->orderByDesc('created_at')->get();
+        return view('admin.customer-sales',compact('sales'));
+   }
 
 
     public function saleProOne(){
@@ -95,7 +99,7 @@ class SaleController extends Controller
                 $i++;
             }
         }
-
+        $sale->total = $total;
         $discountAmount = 0;
         $discountValue = $request->value;
         if ($request->discountType == 0) {
@@ -117,7 +121,7 @@ class SaleController extends Controller
         }
 
 
-        $sale->total = $total;
+        $sale->total_f = $total;
         $professional->sales()->save($sale);
         $date = Carbon::now()->format('y');
         $sale->code = 'tapino'.'-'.$date.'-'.$sale->id;
@@ -148,7 +152,7 @@ class SaleController extends Controller
             $stock->save();
             $saleline->save();
        }
-       return redirect('admin/sales');
+       return redirect('admin/professional-sales');
     }
     public function saleDetail($id){
         $sale = Sale::find($id);

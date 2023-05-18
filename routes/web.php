@@ -13,6 +13,7 @@ use App\Http\Controllers\LoadController;
 use App\Http\Controllers\VendorController;
 use App\Http\Controllers\PosController;
 use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\AdminController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -26,9 +27,6 @@ use App\Http\Controllers\CustomerController;
 
 Route::get('/', function () {
     return view('welcome');
-});
-Route::get('/admin', function () {
-    return view('admin.dashboard-admin');
 });
 
 Auth::routes();
@@ -46,6 +44,7 @@ Route::resource('/admin/vendors',VendorController::class)->middleware('can:admin
 Route::resource('/admin/workers',WorkerController::class)->middleware('can:admin');
 Route::resource('/admin/salaries',SalaryController::class)->middleware('can:admin');
 
+
 //sale pro
 Route::get('admin/sale-pro-one', [App\Http\Controllers\SaleController::class, 'saleProOne'])->middleware('can:admin');
 Route::post('admin/sale-pro-two', [App\Http\Controllers\SaleController::class, 'saleProTwo'])->middleware('can:admin');
@@ -55,9 +54,12 @@ Route::post('admin/update-sale', [App\Http\Controllers\SaleController::class, 'u
 Route::get('admin/get-pro-info/{id}', [App\Http\Controllers\SaleController::class, 'proInfo'])->middleware('can:admin');
 Route::resource('admin/sales',SaleController::class)->middleware('can:admin');
 Route::get('admin/sale-detail/{id}', [App\Http\Controllers\SaleController::class, 'saleDetail'])->middleware('can:admin');
+Route::get('admin/professional-sales', [App\Http\Controllers\SaleController::class, 'saleProfessional'])->middleware('can:admin');
+Route::get('admin/customer-sales', [App\Http\Controllers\SaleController::class, 'saleCustomer'])->middleware('can:admin');
 
 // pos system
 
 Route::resource('admin/pos',PosController::class);
 Route::resource('admin/sales-customer',PosController::class);
 Route::resource('admin/customers',CustomerController::class);
+Route::resource('/admin',AdminController::class)->middleware('can:admin');

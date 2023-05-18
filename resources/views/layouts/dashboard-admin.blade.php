@@ -240,7 +240,8 @@
 						</a>
                         <ul aria-expanded="false">
                             <li><a href="{{asset('admin/sale-pro-one')}}">Ajouter</a></li>
-                            <li><a href="{{asset('admin/sales')}}">Tous</a></li>
+                            <li><a href="{{asset('admin/professional-sales')}}">Professionnels</a></li>
+                            <li><a href="{{asset('admin/customer-sales')}}">Clients</a></li>
                         </ul>
                     </li>
                     <li><a class="ai-icon" href="{{ asset('admin/stocks') }}" aria-expanded="false">
