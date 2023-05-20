@@ -2,6 +2,7 @@
 
 @section('content')
 
+
 <div class="content-body">
     <div class="container-fluid">
         <div class="d-flex justify-content-between align-items-center flex-wrap grid-margin">
@@ -11,19 +12,19 @@
                 Imprimer
               </button>
             </div>
-          </div>
+        </div>
 
         <div class="row mt-3">
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
-                        <h4 class="card-title">Détails de la vente </h4>
+                        <h4 class="card-title">Détail vente </h4>s
                     </div>
 
                     <div class="card-body print-section" id="printable">
                         <div class="d-flex justify-content-between" >
                             <div >
-                                <img src="{{asset('assets/images/logo-report.png')}}"> <br>
+                                <img src="{{asset('dashboard/images/logo-report.png')}}"> <br>
                                 <p> <b>Site Web :</b>  www.tapino.com <br>
                                       <b>  Tél :</b> 0560 09 90 33
                                     </p>
@@ -40,7 +41,7 @@
                             </div>
 
                         </div>
-                        <table class="table  table-striped">
+                        <table class="table table-striped">
                             <thead>
                               <tr>
                                 <th scope="col">#</th>
@@ -89,7 +90,7 @@
 
                             </tbody>
                         </table>
-                     </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -103,10 +104,15 @@
 @push('order-detail-scripts')
 
 <script>
-$('.printMe').click(function(){
-    $('#printable').printThis();
-});
+
+
+
+$('.printMe').on('click', function() {
+    $.print("#printable");
+  });
 </script>
+
+
 
 @endpush
 

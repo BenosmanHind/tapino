@@ -16,6 +16,7 @@
 
         <link href="{{asset('dashboard/vendor/bootstrap-select/dist/css/bootstrap-select.min.css')}}" rel="stylesheet">
         <link href="{{asset('dashboard/css/style.css')}}" rel="stylesheet">
+        <link href="https://printjs-4de6.kxcdn.com/print.min.css" rel="stylesheet">
         <link href="https://cdn.lineicons.com/2.0/LineIcons.css" rel="stylesheet">
         <link rel="stylesheet" href="{{asset('dashboard/uploader/pe-icon-7-stroke.css')}}">
         <link rel="stylesheet" href="{{asset('dashboard/uploader/drop_uploader.css')}}">
@@ -23,9 +24,13 @@
 
         <link href="{{asset('dashboard/vendor/summernote/summernote.css')}}" rel="stylesheet">
 
+
     </head>
 
+
 <body>
+
+
 
     <!--*******************
         Preloader start
@@ -385,6 +390,7 @@
 
 
     <!-- Required vendors -->
+
     <script src="{{asset('dashboard/vendor/global/global.min.js')}}"></script>
 	<script src="{{asset('dashboard/vendor/bootstrap-select/dist/js/bootstrap-select.min.js')}}"></script>
     <script src="{{asset('dashboard/vendor/chart.js/Chart.bundle.min.js')}}"></script>
@@ -407,6 +413,8 @@
     <script src="{{asset('dashboard/vendor/svganimation/svg.animation.js')}}"></script>
     <script src="{{asset('dashboard/uploader/drop_uploader.js')}}"></script>
     <script src="{{asset('dashboard/vendor/summernote/js/summernote.min.js')}}"></script>
+
+
     <!-- Summernote init -->
     <script src="{{asset('dashboard/js/plugins-init/summernote-init.js')}}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/js/fontawesome.min.js" referrerpolicy="no-referrer"></script>
@@ -416,11 +424,13 @@
 
     <!-- Toastr -->
 
-    <script src="{{asset('dashboard/print/printThis.js')}}"></script>
 
 
     	<!-- create sale -->
 	<script src="{{asset('Dashboard/js/create-sale.js')}}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js" integrity="sha512-3gJwYpMe3QewGELv8k/BX9vcqhryRdzRMxVfq6ngyWXwo03GFEzjsUm8Q7RZcHPHksttq7/GFoxjCVUjkjvPdw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+	<script src="https://printjs-4de6.kxcdn.com/print.min.js"></script>
 
 	<script>
 	(function($) {
