@@ -162,10 +162,11 @@ class SaleController extends Controller
 
     public function edit($id){
         $sale = Sale::find($id);
+        $saletable = $sale->saletable;
         $salelines = Saleline::where('sale_id',$id)->get();
         $productlines = Productline::with('product')->get();
         $professionals = Professional::orderByDesc('created_at')->get();
-        return view('admin.edit-sale',compact('sale','salelines','productlines','professionals'));
+        return view('admin.edit-sale',compact('sale','salelines','productlines','professionals','saletable'));
     }
 
 
@@ -206,7 +207,7 @@ class SaleController extends Controller
         $total = 0 ;
         $i = 0 ;
         $j = 0;
-       $professional = Professional::find($request->professional);
+        $professional = Professional::find($request->professional);
         $sale = Sale::find($request->sale);
         $salelines = Saleline::where('sale_id',$sale->id)->get();
         $stocks = Stock::where('sale_id',$sale->id)->get();
@@ -216,7 +217,7 @@ class SaleController extends Controller
         foreach($stocks as $stock){
             $stock->delete();
         }
-        $sale->professional_id = $professional->id;
+
         $sale->address = $professional->address;
         $sale->wilaya = $professional->wilaya;
 
@@ -241,7 +242,7 @@ class SaleController extends Controller
                  $i++;
              }
          }
-
+         $sale->total = $total;
          $discountAmount = 0;
          $discountValue = $request->value;
          if ($request->discountType == 0) {
@@ -262,9 +263,17 @@ class SaleController extends Controller
              $sale->tva =  $tvaAmount;
          }
 
+         if($request->discountType == 'NULL'){
+            $sale->promo = NULL;
+             $sale->type_promo =NULL;
+         }
 
-         $sale->total = $total;
-         $sale->save();
+         if($request->check_tva == null){
+            $sale->tva = NULL;
+         }
+
+         $sale->total_f = $total;
+         $professional->sales()->save($sale);
 
         foreach($products as $product){
              $saleline = new Saleline();
@@ -292,6 +301,12 @@ class SaleController extends Controller
              $stock->save();
              $saleline->save();
         }
-        return redirect('admin/sales');
+        return redirect('admin/professional-sales');
+    }
+
+    public function destroy($id){
+        $sale = Sale::find($id);
+        $sale->delete();
+        return redirect('admin/professional-sales');
     }
 }

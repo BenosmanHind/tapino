@@ -83,11 +83,12 @@
                                     <td >  {{ $sale->tva }} Da</td>
                                 </tr>
                                 @endif
+                                @if(($sale->promo != NULL || $sale->tva != NULL) || ($sale->promo != NULL && $sale->tva != NULL))
                                 <tr>
                                     <td colspan="5" style="text-align:right;"><b>Total</b> </td>
-                                    <td > <b style="font-size: 17px">{{ number_format($sale->total, 2) }}  Da</b> </td>
+                                    <td > <b style="font-size: 17px">{{ number_format($sale->total_f, 2) }}  Da</b> </td>
                                 </tr>
-
+                                @endif
                             </tbody>
                         </table>
                     </div>

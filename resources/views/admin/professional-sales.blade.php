@@ -38,14 +38,14 @@
                                         <td>{{$sale->saletable->name}}</td>
                                         <td>{{$sale->wilaya}}</td>
                                         <td>{{$sale->address}}</td>
-                                        <td>{{$sale->total}}</td>
+                                        <td>{{$sale->total_f}} Da</td>
                                         <td>{{ $sale->created_at->format('Y-m-d H:m') }}</td>
                                         <td>
                                             <div class="d-flex">
                                                 <a href="{{asset('admin/sale-detail/'.$sale->id) }}" class="btn btn-success shadow btn-xs sharp mr-1"><i class="fas fa-eye"></i></a>
-                                                <a href="{{asset('admin/sales/'.$sale->id.'/edit')}}" class="btn btn-primary shadow btn-xs sharp mr-1"><i class="fas fa-pencil-alt"></i></a>
+                                                <a href="{{asset('admin/professional-sales/'.$sale->id.'/edit')}}" class="btn btn-primary shadow btn-xs sharp mr-1"><i class="fas fa-pencil-alt"></i></a>
 
-                                                <form action="" method="post">
+                                                <form action="{{ asset('admin/professional-sales/'.$sale->id) }}" method="post">
                                                     {{csrf_field()}}
                                                     {{method_field('DELETE')}}
                                                     <button class="btn btn-danger shadow btn-xs sharp" onclick="return confirm('Vous voulez vraiment supprimer?')"><i class="fa fa-trash"></i></button>

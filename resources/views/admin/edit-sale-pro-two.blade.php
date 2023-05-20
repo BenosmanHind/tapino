@@ -101,7 +101,7 @@
                                 <div class="form-group">
                                     <label for="">Remise </label>
                                     <select class="form-control" id="discount-type" name="discountType">
-                                      <option>Sans remise</option>
+                                      <option value="NULL">Sans remise</option>
                                       <option value="0">Fixe</option>
                                       <option value="1">pourcentage</option>
                                     </select>

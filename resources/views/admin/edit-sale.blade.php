@@ -31,7 +31,7 @@
                             <div class="form-group col-md-4">
                                 <select name="professional" id="select-pro" title="selectionner un client..."  data-live-search="true"  class="selectpicker form-control">
                                     @foreach($professionals as $professional)
-                                        <option value="{{$professional->id}}" @if($sale->professional_id == $professional->id) selected @endif> {{$professional->name}}</option>
+                                        <option value="{{$professional->id}}" @if($saletable->id == $professional->id) selected @endif> {{$professional->name}}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -40,7 +40,7 @@
                             </div>
                             <div class="form-group col-md-4">
                                 <b> Information sur le client :</b> <br>
-                                <span id="pro-entreprise">{{ $sale->professional->entreprise }} </span> ,  <span id="pro-type">{{ $sale->professional->price_type }}</span>
+                                <span id="pro-entreprise">{{ $saletable->entreprise }} </span> ,  <span id="pro-type">prix :{{ $saletable->price_type }}</span>
                             </div>
                         </div>
                     </div>
