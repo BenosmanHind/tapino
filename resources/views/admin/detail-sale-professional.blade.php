@@ -103,18 +103,11 @@
 @endsection
 
 @push('order-detail-scripts')
-
 <script>
-
-
-
-$('.printMe').on('click', function() {
-    $.print("#printable");
-  });
-</script>
-
-
-
+    $('.printMe').click(function(){
+        $('#printable').printThis();
+    });
+    </script>
 @endpush
 
 

@@ -419,18 +419,15 @@
     <script src="{{asset('dashboard/js/plugins-init/summernote-init.js')}}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/js/fontawesome.min.js" referrerpolicy="no-referrer"></script>
 
-    <!--Validate jquery -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.2/jquery.validate.min.js"></script>
+
 
     <!-- Toastr -->
 
-
+    <script src="{{asset('/print/printThis.js')}}"></script>
 
     	<!-- create sale -->
 	<script src="{{asset('Dashboard/js/create-sale.js')}}"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js" integrity="sha512-3gJwYpMe3QewGELv8k/BX9vcqhryRdzRMxVfq6ngyWXwo03GFEzjsUm8Q7RZcHPHksttq7/GFoxjCVUjkjvPdw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
-	<script src="https://printjs-4de6.kxcdn.com/print.min.js"></script>
 
 	<script>
 	(function($) {
